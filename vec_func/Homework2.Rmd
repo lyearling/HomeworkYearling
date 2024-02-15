@@ -17,6 +17,7 @@ dt <- tribble(~x, ~y, ~w, ~z,
 )
 dt
 
+#PROBLEM 1:
 #1_a
 means <- map_dbl(dt, mean)
 means
@@ -39,6 +40,37 @@ result_table <- data.frame(
   min = apply(dt, 2, min)
 )
 result_table
+
+#PROBLEM 2
+calculate_means <- function() {
+  means <- numeric(10000)
+  
+  for (i in 1:10000) {
+    random_observations <- rexp(5, rate=1)
+    sample_mean <- mean(random_observations)
+    means[i] <- sample_mean
+  }
+  
+  return(means)
+}
+calculate_means()
+
+#random_means variable created to plot the distribution of means
+random_means <- calculate_means()
+
+hist(random_means, breaks=30, main="Distribution of Means")
+
+#2_a
+calculate_means <- function() {
+  
+  random_observations <- rexp(5, rate=1)
+  return(mean(random_observations))
+}
+means_map <- map_dbl(1:10000, ~calculate_means())
+means_map
+
+hist(means_map, breaks=30, main="Distribution of Means Using map function")
+
 
 ```
 
