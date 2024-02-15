@@ -29,7 +29,16 @@ std_dev
 sq_root <- map(dt, sqrt)
 sq_root
 
-
+#1_d
+result_table <- data.frame(
+  mean = colMeans(dt),
+  max = apply(dt, 2, max),
+  q1 = apply(dt, 2, quantile, probs = 0.25),
+  median = apply(dt, 2, median),
+  q3 = apply(dt, 2, quantile, probs = 0.75),
+  min = apply(dt, 2, min)
+)
+result_table
 
 ```
 
