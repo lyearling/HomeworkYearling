@@ -25,5 +25,11 @@ means
 std_dev <- map_dbl(dt, sd)
 std_dev
 
+#1_c
+sq_root <- map(dt, sqrt)
+sq_root
+
+
+
 ```
 
