@@ -61,16 +61,29 @@ random_means <- calculate_means()
 hist(random_means, breaks=30, main="Distribution of Means")
 
 #2_a
-calculate_means <- function() {
+calculate_means_map <- function() {
   
   random_observations <- rexp(5, rate=1)
   return(mean(random_observations))
 }
-means_map <- map_dbl(1:10000, ~calculate_means())
+means_map <- map_dbl(1:10000, ~calculate_means_map())
 means_map
 
 hist(means_map, breaks=30, main="Distribution of Means Using map function")
 
+#2_b
+calculate_means_replicate <- function() {
+  means_replicate <- replicate(10000, {
+    sample <- rexp(5, rate = 1)
+    sample_mean <- mean(sample)
+    sample_mean
+  })
+  
+  return(means_replicate)
+}
+
+means_replicate <- calculate_means_replicate()
+hist(means_replicate, breaks=30, main = "Distribution of Sample Means Using Replicate")
 
 ```
 
