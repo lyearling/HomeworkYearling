@@ -21,5 +21,9 @@ dt
 means <- map_dbl(dt, mean)
 means
 
+#1_b
+std_dev <- map_dbl(dt, sd)
+std_dev
+
 ```
 
