@@ -17,6 +17,7 @@ dt <- tribble(~x, ~y, ~w, ~z,
 )
 dt
 
+
 #PROBLEM 1:
 #1_a
 means <- map_dbl(dt, mean)
@@ -40,6 +41,7 @@ result_table <- data.frame(
   min = apply(dt, 2, min)
 )
 result_table
+
 
 #PROBLEM 2
 calculate_means <- function() {
@@ -100,6 +102,13 @@ main = paste("Distribution of Sample Means (Sample Size:", size, ")")
 
 calculate_means_plot()
 
+
+#PROBLEM 3
+output <- vector("double", ncol(mtcars))
+for (i in seq_along(mtcars)) {
+  output[[i]] <- sd(mtcars[[i]])
+}
+output
 
 ```
 
