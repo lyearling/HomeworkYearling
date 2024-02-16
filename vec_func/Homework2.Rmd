@@ -85,5 +85,21 @@ calculate_means_replicate <- function() {
 means_replicate <- calculate_means_replicate()
 hist(means_replicate, breaks=30, main = "Distribution of Sample Means Using Replicate")
 
+#2_c
+calculate_means_plot <- function(iterations = 10000, sample_sizes = c(5, 10, 20)) {
+  for (size in sample_sizes) {
+    means <- replicate(iterations, {
+      sample <- rexp(size, rate = 1)
+      sample_mean <- mean(sample)
+      sample_mean
+    })
+main = paste("Distribution of Sample Means (Sample Size:", size, ")")
+    hist(means, breaks = 30, main = paste("Distribution of Sample Means (Sample Size:", size, ")"))
+  }
+}
+
+calculate_means_plot()
+
+
 ```
 
