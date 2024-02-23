@@ -2,7 +2,7 @@
 title: "Homework2"
 author: "Lucy Yearling"
 date: "`r Sys.Date()`"
-output: pdf_document
+output: html_document
 ---
 
 ```{r}
