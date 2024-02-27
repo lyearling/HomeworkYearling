@@ -1,0 +1,39 @@
+---
+title: "Homework 3 - Lubridate"
+author: "Lucy Yearling"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r}
+
+df <- read.csv("https://dcgerard.github.io/stat_412_612/data/wmata_ridership.csv")
+
+#Problem 1
+df$Date <- as.Date(df$Date)
+
+df_filtered <- df %>% 
+  group_by(month = format(Date, "%Y-%m")) %>%
+  mutate(day_of_month = as.numeric(format(Date, "%d")),
+         rides_on_day = n()) %>%
+  ungroup() %>%
+  mutate(proportion_of_rides = rides_on_day / max(rides_on_day))
+
+df_filtered$day_of_week <- weekdays(df$Date)
+
+ggplot(df_filtered, aes(x = day_of_week, y = proportion_of_rides)) +
+  geom_boxplot() +
+  labs(x = "Day of the Week", y = "Proportion of Rides") +
+  ggtitle("Proportion of Ridership vs Day of the Week")
+
+
+
+#Problem 2
+years <- c(2024, 3021, 2000, 1800, 800, 5050, 600, 7156)
+leap_years <- years[as.logical(ifelse(years %% 4 == 0 & (years %% 100 != 0 | years %% 400 == 0), TRUE, FALSE))]
+leap_years
+
+
+
+```
+
